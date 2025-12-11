@@ -3,7 +3,7 @@ requires = ["hatchling>=1.13"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
-sources = ["src"]
+sources = ["src", "scripts"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/app"]
@@ -29,3 +29,20 @@ dev = [
 lints = [
     "ruff>=0.14.8",
 ]
+
+[tool.ruff]
+src = ["src"]
+include = ["src/**.py", "tests/**.py"]
+target-version = "py312"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+known-first-party = ["src", "tests"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/edu/infrastructure/persistence/migrations/env.py" = ["ERA001", "INP001", "E402"]
+"src/edu/infrastructure/persistence/migrations/versions/**" = ["ALL"]
+"tests/**" = ["S101"]
+

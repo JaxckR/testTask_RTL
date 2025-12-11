@@ -10,18 +10,6 @@ VideoSnapshotId = NewType("VideoSnapshotId", str)
 
 
 @dataclass
-class Video(IDEntity[VideoId]):
-    creator_id: str
-    video_created_at: datetime
-    views_count: int
-    likes_count: int
-    comments_count: int
-    reports_count: int
-    created_at: datetime
-    updated_at: datetime | None
-
-
-@dataclass
 class VideoSnapshot(IDEntity[VideoSnapshotId]):
     video_id: VideoId
     views_count: int
@@ -34,3 +22,17 @@ class VideoSnapshot(IDEntity[VideoSnapshotId]):
     delta_reports_count: int
     created_at: datetime
     updated_at: datetime | None
+
+
+@dataclass
+class Video(IDEntity[VideoId]):
+    creator_id: str
+    video_created_at: datetime
+    views_count: int
+    likes_count: int
+    comments_count: int
+    reports_count: int
+    created_at: datetime
+    updated_at: datetime | None
+
+    snapshots: list[VideoSnapshot]
