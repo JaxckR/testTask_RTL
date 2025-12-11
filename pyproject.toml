@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.13"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+sources = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/app"]
+
+[project]
+name = "testtask-RTL"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiogram>=3.23.0",
+    "alembic>=1.17.2",
+    "dishka>=1.7.2",
+    "psycopg[binary]>=3.3.2",
+    "sqlalchemy[asyncio]>=2.0.45",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.0",
+]
+lints = [
+    "ruff>=0.14.8",
+]

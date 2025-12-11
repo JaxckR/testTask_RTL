@@ -1,0 +1,33 @@
+from dataclasses import dataclass
+from os import getenv
+
+
+@dataclass(frozen=True)
+class PostgresConfig:
+    user: str
+    password: str
+    host: str
+    database: str
+    port: int
+
+    @property
+    def url(self) -> str:
+        return f"postgresql+psycopg://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
+
+
+@dataclass(frozen=True)
+class Config:
+    token: str
+    postgres: PostgresConfig
+
+
+config = Config(
+    token=getenv("BOT_TOKEN"),
+    postgres=PostgresConfig(
+        user=getenv("POSTGRES_USER"),
+        password=getenv("POSTGRES_PASSWORD"),
+        host=getenv("POSTGRES_HOST"),
+        database=getenv("POSTGRES_DB"),
+        port=int(getenv("POSTGRES_PORT")),
+    ),
+)
