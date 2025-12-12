@@ -17,12 +17,14 @@ class PostgresConfig:
 
 @dataclass(frozen=True)
 class Config:
-    token: str
+    BOT_TOKEN: str
+    OPENROUTER_TOKEN: str
     postgres: PostgresConfig
 
 
 config = Config(
-    token=getenv("BOT_TOKEN"),
+    BOT_TOKEN=getenv("BOT_TOKEN"),
+    OPENROUTER_TOKEN=getenv("OPENROUTER_TOKEN"),
     postgres=PostgresConfig(
         user=getenv("POSTGRES_USER"),
         password=getenv("POSTGRES_PASSWORD"),
