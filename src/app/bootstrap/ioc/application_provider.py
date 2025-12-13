@@ -1,6 +1,6 @@
 from dishka import Provider, Scope, provide_all
 
-from app.application.handlers.nl2sql import NL2SQLHandler
+from app.application.handlers import NL2SQLHandler
 
 
 class ApplicationProvider(Provider):

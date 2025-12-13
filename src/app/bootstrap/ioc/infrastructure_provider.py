@@ -1,9 +1,9 @@
 from dishka import Provider, Scope, provide
 
-from app.application.ports.llm_gateway import LLMGateway
+from app.application.ports import LLMGateway
 from app.entities.repository import VideoRepository
-from app.infrastructure.adapters.llm_gateway import OpenRouterGateway
-from app.infrastructure.persistence.adapters.video import VideoRepositoryImpl
+from app.infrastructure.adapters import OpenRouterGateway
+from app.infrastructure.persistence.adapters import VideoRepositoryImpl
 
 
 class InfrastructureProvider(Provider):

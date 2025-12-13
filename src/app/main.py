@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher
 from dishka import make_async_container
 from dishka.integrations.aiogram import setup_dishka
 
-from app.bootstrap.config import config, PostgresConfig, Config
+from app.bootstrap.config import config, PostgresConfig, Config, LLMConfig
 from app.bootstrap.ioc import providers
 from app.bootstrap.logging import setup_logging
 from app.infrastructure.persistence.tables import map_tables
@@ -24,6 +24,7 @@ async def app() -> None:
         *providers(),
         context={
             PostgresConfig: config.postgres,
+            LLMConfig: config.llm,
             Config: config,
         },
     )

@@ -31,13 +31,13 @@ class Loader:
     def __init__(
         self,
         filename: str,
-        *args,
+        *_,
         video_repository: VideoRepositoryImpl,
     ) -> None:
         if filename.startswith("/"):
             filename = filename[1:]
 
-        self.path = f"data/{filename}"
+        self.path = f"{filename}"
         self.repository = video_repository
 
         if not os.path.exists(self.path):

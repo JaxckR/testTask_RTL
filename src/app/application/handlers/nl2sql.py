@@ -1,6 +1,6 @@
 from typing import Any
 
-from app.application.ports.llm_gateway import LLMGateway, AllowedActions
+from app.application.ports import LLMGateway
 from app.entities.repository import VideoRepository
 
 
@@ -14,8 +14,10 @@ class NL2SQLHandler:
         self._llm_gateway = llm_gateway
 
     async def handle(self, data: str) -> Any:
-        action, filters = await self._llm_gateway.analyze(content=data)
-        print(action, filters)
+        sql = await self._llm_gateway.analyze(content=data)
 
-        if action == AllowedActions.GET_VIDEO:
-            return await self._video_repository.get_count(filters=filters)
+        if sql is None:
+            return "Произошли проблемы на стороне llm провайдера :("
+
+        if sql:
+            return await self._video_repository.raw(sql)

@@ -19,11 +19,9 @@ services:
 
   backend:
     <<: *api
-    ports:
-      - "127.0.0.1:8000:8000"
     depends_on:
       - migrations
-    command: "python -m uvicorn store.main:fastapi_app --factory --host 0.0.0.0"
+    command: "python -m app.main"
 
 volumes:
   postgres-data:

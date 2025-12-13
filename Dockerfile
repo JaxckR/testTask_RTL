@@ -2,8 +2,8 @@ FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 WORKDIR /app
 
 COPY ./pyproject.toml ./pyproject.toml
-COPY ./README.md ./alembic.ini ./
-COPY ./jwt_certs ./jwt_certs
+COPY ./README.md ./alembic.ini ./llm_prompt.txt ./
+COPY ./videos.json ./scripts ./
 COPY ./src ./src
 
 RUN uv pip install --system --target dependencies .
