@@ -47,6 +47,7 @@ git clone https://github.com/JaxckR/testTask_RTL.git
 2. Заполните .env.dist файл и переименуйте его в .env
 3. Запустите приложение
 ```
+cd testTask_RTL
 docker compose up --build
 ```
 **Чтобы загрузить свои данные воспользуйтесь следующими командами**
