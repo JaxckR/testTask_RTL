@@ -53,7 +53,7 @@ docker compose up --build
 **Чтобы загрузить свои данные воспользуйтесь следующими командами**
 ```
 docker exec -it *container_name* bash
-python -m load_videos.py *path_to_file*
+python -m load_videos *path_to_file*
 ```
 
 ## Об архитектуре
