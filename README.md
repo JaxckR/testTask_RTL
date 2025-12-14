@@ -20,16 +20,17 @@
 ```
 git clone https://github.com/JaxckR/testTask_RTL.git
 ```
-2. Установите все зависимости
+2. Установите все зависимости и активируйте вирутальное окружение
 ```
 cd testTask_RTL
 uv sync --all-groups
+.\.venv\Scripts\activate
 ```
 3. Заполните .env.dist файл и переименуйте его в .env
 4. Примените миграции и запустите приложение
 ```
-alembic upgrade head
-uv run --env-file .env app.main
+uv run --env-file .env alembic upgrade head
+uv run --env-file .env python -m app.main
 ```
 
 **Чтобы загрузить свои данные воспользуйтесь следующей командой**
